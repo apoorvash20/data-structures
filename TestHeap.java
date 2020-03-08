@@ -10,11 +10,12 @@
  */
 public class TestHeap {
     public static void main(String[] args){
-        Heap h=new Heap();
-        h.builtMaxHeap();
+        int[] arr={50,10,20,45,30,15,5};
+        Heap h=new Heap(arr);
+       /* h.builtMaxHeap();
         h.print();
         h.builtMinHeap();
-        h.print();
+        h.print();*/
         h.heapSort();
         h.print();
     }

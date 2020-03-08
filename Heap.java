@@ -9,8 +9,12 @@
  * @author Apoorva
  */
 public class Heap {
-    int[] arr={1,3,5,4,6,13,10,9,8,15,17};
-    int size=arr.length;
+    int[] arr;
+    int size;
+    Heap(int[] a){
+      arr=a;  
+      size=a.length;
+    }
     
     public int left(int index){
         return (2*index+1);
@@ -39,7 +43,9 @@ public class Heap {
             min=rt;
         }
         if(min!=index){
-            swap(arr[index],arr[min]);
+            int temp=arr[index];
+            arr[index]=arr[min];
+            arr[min]=temp;
             minHeapify(min);
             
         }
@@ -55,7 +61,9 @@ public class Heap {
             max=rt;
         }
         if(max!=index){
-            swap(this.arr[index],this.arr[max]);
+            int temp=arr[index];
+            arr[index]=arr[max];
+            arr[max]=temp;
             maxHeapify(max);
             
         }
@@ -75,12 +83,15 @@ public class Heap {
     }
     public void heapSort(){
         builtMaxHeap();
-        int len=size;
-        for(int i=len-1;i>=0;i--){
-            swap(arr[i],arr[0]);
-            len--;
+        
+        for(int i=size-1;i>=0;i--){
+            int temp=arr[0];
+            arr[0]=arr[i];
+            arr[i]=temp;
+            size--;
             maxHeapify(0);
         }
+        size=arr.length;
         
     }
     public void print(){
